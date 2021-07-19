@@ -58,7 +58,7 @@ class Music:
         }
 
         with youtube_dl.YoutubeDL(ydl_opts) as ydl:
-            info_dict = ydl.extract_info(link, download=True)
+            info_dict = ydl.extract_info(download=True)
 
         pass
 
@@ -74,7 +74,7 @@ class Chat:
             'start':'🤖 Hello, '+ self.user_name +'!\n\n'
                     '📩 Send me:\n\n'
                     '"*/music* _song name_"  or\n'
-                    '"*/music* _musician name - song name_"\n\n'
+                    '"*/music* _musician name_"\n\n'
                     'to order some music. 🎶',
             
             'spotify_input_error':"‼️ *Oops! The bot doesn't support Spotify links!*\n"
@@ -117,7 +117,7 @@ class Chat:
         min_duration, split_count = Music.get_duration(self, result)
 
         if int(min_duration) < 30 and split_count < 3:
-            file_name = Music.get_title(self, result) +' - @TLMusicDownloader_bot '+str(randint(0,999999))+'.mp3'
+            file_name = Music.get_title(self, result) +' - @anysongdlrobot '+str(randint(0,999999))+'.mp3'
             file_name = file_name.replace('"', '')
 
             self.send_message(['🎵 '+ Music.get_title(self, result) +'\n'+'🔗 '+Music.get_link(self, result)])
