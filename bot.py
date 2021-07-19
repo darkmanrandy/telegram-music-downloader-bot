@@ -11,7 +11,7 @@ from os.path import join, dirname
 dotenv_path = join(dirname(__file__), '.env')
 load_dotenv(dotenv_path)
 
-TOKEN = os.environ.get("1946832700:AAG7pRDswaz9BcVxStAJwXLoH9JdsZELuOo")
+TOKEN = os.environ.get("TOKEN")
 bot = telepotpro.Bot(TOKEN)
 
 class Music:
@@ -74,7 +74,7 @@ class Chat:
             'start':'🤖 Hello, '+ self.user_name +'!\n\n'
                     '📩 Send me:\n\n'
                     '"*/music* _song name_"  or\n'
-                    '"*/music* _musician name_"\n\n'
+                    '"*/music* _musician name - song name_"\n\n'
                     'to order some music. 🎶',
             
             'spotify_input_error':"‼️ *Oops! The bot doesn't support Spotify links!*\n"
@@ -117,7 +117,7 @@ class Chat:
         min_duration, split_count = Music.get_duration(self, result)
 
         if int(min_duration) < 30 and split_count < 3:
-            file_name = Music.get_title(self, result) +' - @anysongdlrobot '+str(randint(0,999999))+'.mp3'
+            file_name = Music.get_title(self, result) +' - @TLMusicDownloader_bot '+str(randint(0,999999))+'.mp3'
             file_name = file_name.replace('"', '')
 
             self.send_message(['🎵 '+ Music.get_title(self, result) +'\n'+'🔗 '+Music.get_link(self, result)])
