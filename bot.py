@@ -66,7 +66,7 @@ class Chat:
     def __init__(self, msg):
         self.chat_id = msg['chat']['id']
         self.user_input = msg['text']
-        self.user_input = self.user_input.replace('@TLMusicDownloader_bot', '')
+        self.user_input = self.user_input.replace('@anysongdlrobot', '')
         self.user_name = msg['from']['first_name']
         self.message_id = msg['message_id']
 
